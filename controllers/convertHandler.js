@@ -28,7 +28,7 @@ function ConvertHandler() {
     let [, num1, backslash, num2, unit] = arr;
 
     if (backslash && num2) {
-      return Number(num1) / Number(num2);
+      return Number((Number(num1) / Number(num2)).toFixed(5));
     } else if (num1) {
       return Number(num1);
     } else {
