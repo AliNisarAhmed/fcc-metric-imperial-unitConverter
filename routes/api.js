@@ -20,6 +20,18 @@ module.exports = function (app) {
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
       var initUnit = convertHandler.getUnit(input);
+      
+      if (!initNum && !initUnit) {
+        res.json({string: 'Invalid Number & Unit'});
+        return;
+      } else if (!initNum) {
+        res.json({string: 'Invalid Number'});
+        return;
+      } else if (!initUnit) {
+        res.json({string: 'Invalid Unit'});
+        return;
+      }
+    
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
@@ -30,7 +42,8 @@ module.exports = function (app) {
         returnNum,
         returnUnit,
         string: toString
-      })
+      });
+    
     });
     
 };
