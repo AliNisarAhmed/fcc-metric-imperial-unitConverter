@@ -6,6 +6,10 @@
 *       
 */
 
+// worked out on repl.it first
+// https://repl.it/@AA87/getNum-from-31mi-using-regex
+//  https://repl.it/@AA87/getUnit-and-others
+
 function ConvertHandler() {
   
   this.getNum = function (input) {
@@ -19,7 +23,7 @@ function ConvertHandler() {
 
     let arr = input.match(numRegex);
 
-    console.log(arr);
+    // console.log(arr);
 
     let [, num1, backslash, num2, unit] = arr;
 
@@ -43,8 +47,8 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     let arr = input.split('');
     let index = arr.findIndex(w => w.match(/[a-zA-Z]/));
-    let unit = arr.slice(index).join('');
-    let units = ['gal', 'lbs', 'mi', 'L', 'kg', 'km'];
+    let unit = arr.slice(index).join('').toLowerCase();
+    let units = ['gal', 'lbs', 'mi', 'l', 'kg', 'km'];
     if (units.includes(unit)) {
       return unit;
     } else {
@@ -59,7 +63,7 @@ function ConvertHandler() {
       kg: 'lbs',
       mi: 'km',
       km: 'mi',
-      gal: 'L',
+      gal: 'l',
       l: 'gal'
     };
     return units[initUnit.toLowerCase()];
@@ -73,7 +77,7 @@ function ConvertHandler() {
       kg: 'kilogram',
       lbs: 'pound',
       gal: 'gallon',
-      l: 'litre'
+      l: 'liter'
     };
     return units[unit.toLowerCase()];
   };
